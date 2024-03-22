@@ -515,7 +515,7 @@ function parseJunitXml(xml) {
                     status = TestStatus.Fail;
                     const element = failure_or_error[0];
                     message = element.$.message;
-                    details = element._;
+                    details = element._ || testcase["system-out"];
                     counts.failed++;
                 }
                 else {
