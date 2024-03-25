@@ -250,7 +250,11 @@ async function parseJunitXml(xml: any): Promise<TestResult> {
                 const element = failure_or_error[0]
 
                 message = element.$.message
-                details = element._ || testcase["system-out"]._
+                details = element._
+                let system_out
+                if (!details && (system_out = testcase["system-out"])) {
+                    details = system_out._
+                }
 
                 counts.failed++
             } else {
