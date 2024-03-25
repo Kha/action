@@ -517,8 +517,8 @@ function parseJunitXml(xml) {
                     message = element.$.message;
                     details = element._;
                     let system_out;
-                    if (!details && (system_out = testcase["system-out"])) {
-                        details = system_out._;
+                    if (system_out = testcase["system-out"]) {
+                        details += "\n\nstdout:\n\n" + system_out._;
                     }
                     counts.failed++;
                 }
